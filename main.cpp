@@ -11,13 +11,22 @@ int main() {
 	myList._vec.push_back(3);
 	myList._vec.push_back(5);
 
-	auto iter = myList.getIterator();
+	auto doubled = m::map<int, int>(&myList, [](int i) { return i * 2; });
+	auto tripled = m::map<int, int>(&doubled, [](int i) { return i * 3; });
 
-	auto doubled = m::map<int, int>(iter, [](int i) { return i * 2; });
+	auto loop = tripled.getIterator();
 
-	while(doubled.hasNext()) {
-		auto res = doubled.next();
-		std::cout << res << "";
+	while(loop->hasNext()) {
+		auto res = loop->next();
+		std::cout << res << " ";
 	}
+
+	loop = tripled.getIterator();
+
+	while(loop->hasNext()) {
+		auto res = loop->next();
+		std::cout << res << " ";
+	}
+
 
 }

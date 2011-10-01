@@ -5,6 +5,9 @@
 namespace m {
 
 template <typename T>
+class seq;
+
+template <typename T>
 class list;
 
 template <typename T>
